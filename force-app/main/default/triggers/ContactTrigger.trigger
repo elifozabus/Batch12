@@ -4,6 +4,7 @@ trigger ContactTrigger on Contact (before insert, after insert, before update, a
         if (Trigger.isUpdate){
             system.debug('We are in BEFORE UPDATE Trigger.');
             ContactTriggerHandler.updateContactValidation1(Trigger.new, Trigger.old, Trigger.newMap,Trigger.oldMap);
+            ContactTriggerHandler.updateContactValidation2(Trigger.new, Trigger.old, Trigger.newMap,Trigger.oldMap);
         }
     }
 }
