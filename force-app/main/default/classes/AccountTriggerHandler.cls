@@ -1,4 +1,6 @@
+@isTest
 public class AccountTriggerHandler {
+   
     public static void updateAccountDescription(List<Account> accTriggerNew, List<Account> accTriggerOld,  Map<id, account> accTriggerOldMap,  Map<id, account> accTriggerNewMap){
         
         for (Account eachAccount : accTriggerNew){
