@@ -62,7 +62,7 @@ public class DmlDemo9 {
         st.Requested_by_date__c = date.today();
         //setting relationship
         st.Salesforce_Project__c = sp.id;
-        insert st;
+        insert st; //UNUTMA:Child, parentin id'sini tasir.
 
     }
 
