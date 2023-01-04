@@ -1,5 +1,5 @@
 trigger SalesforceProjectTrigger on Salesforce_Project__c (before insert, after insert, before update) {
-    if (Trigger.isAfter && Trigger.isInsert){
+   /* if (Trigger.isAfter && Trigger.isInsert){
         //here we will call handler to create default ticket.
         SalesforceProjectTriggerHandler.createDefaultTicket(trigger.new);
 
@@ -19,6 +19,6 @@ trigger SalesforceProjectTrigger on Salesforce_Project__c (before insert, after 
         SalesforceProjectTriggerHandler.spCompletedStatus(Trigger.new, Trigger.old, Trigger.newMap, Trigger.oldMap);
 
 
-    }
+    }*/
 
 }

@@ -11,7 +11,8 @@ public class ContactTriggerHandler {
     public static void updateContactValidation2(List<contact> conTriggerNew, List<contact> conTriggerOld, Map<id, contact> conTriggerNewMap, Map<id, contact> conTriggerOldMap){
         for (Contact eachContact : conTriggerNew){
             if (eachContact.LeadSource != conTriggerOldMap.get(eachContact.Id).LeadSource){
-                eachContact.LeadSource.addError('Cannot Update LEAD SOURCE. Come on');
+                string customMsg = system.label.contactValidation2;
+                eachContact.LeadSource.addError(customMsg);
             }
         }
     }

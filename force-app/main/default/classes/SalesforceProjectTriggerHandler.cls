@@ -1,23 +1,30 @@
 public class SalesforceProjectTriggerHandler {
     public static void createDefaultTicket(List<Salesforce_Project__c> spTriggerNew){
         //create an empty list of sf tickets because we want to create multiple tickets because we might have multiple projects.
-        List<Salesforce_Ticket__c> stList = new List<Salesforce_Ticket__c>();
+        try{
+            List<Salesforce_Ticket__c> stList = new List<Salesforce_Ticket__c>();
 
-       //for each project create new ticket.
-       for (Salesforce_Project__c eachSP : spTriggerNew){
-        Salesforce_Ticket__c st = new Salesforce_Ticket__c();
-        st.Subject__c = 'Default st';
-        st.Salesforce_Project__c = eachSP.id; //this is relationship field.
-         //add it on the list.
-        stList.add(st);
-       }
-       //insert only if we have at least one record in the list.
-       if(!stList.isEmpty()){
-        insert stList;
-       }
-
+            //for each project create new ticket.
+            for (Salesforce_Project__c eachSP : spTriggerNew){
+                Salesforce_Ticket__c st = new Salesforce_Ticket__c();
+                st.Subject__c = 'Default st';
+                st.Salesforce_Project__c = eachSP.id; //this is relationship field.
+                //add it on the list.
+                stList.add(st);
+            }
+            //insert only if we have at least one record in the list.
+            if(!stList.isEmpty()){
+                insert stList;
+            }
+        }catch(exception ex){
+            system.debug('Exception msg: ' + ex.getMessage());
+            for (Salesforce_Project__c eachSP : spTriggerNew){
+                eachSP.addError('Error in createing ticket. Plase contact your developer.');  
+            }
+        }
     }
-    public static void validateSPComplete (list<Salesforce_Project__c> spTriggerNew, list <Salesforce_Project__c> spTriggerOld, Map<id, Salesforce_Project__c> spTriggerNewMap, Map<id, Salesforce_Project__c> spTriggerOldMap ){
+    
+    /*public static void validateSPComplete (list<Salesforce_Project__c>        spTriggerNew, list <Salesforce_Project__c> spTriggerOld, Map<id, Salesforce_Project__c> spTriggerNewMap, Map<id, Salesforce_Project__c> spTriggerOldMap ){
         //find all the projects which are completed
         Set<id> spIds = new set<id>();
         for(Salesforce_Project__c eachSP: spTriggerNew){
@@ -31,7 +38,6 @@ public class SalesforceProjectTriggerHandler {
             Salesforce_Project__c sp = spTriggerNewMap.get(eachST.Salesforce_Project__c);
             sp.Status__c.addError('Cannot complete project because all tickets are not completed. Go away now.');
         }
-
     }
     @future
     public static void updateProjectDescription(set<id> spIds){
@@ -70,6 +76,6 @@ public class SalesforceProjectTriggerHandler {
         update allST;
         //update all the tickets.
 
-    }
-   
+    }*/
+    
 }
