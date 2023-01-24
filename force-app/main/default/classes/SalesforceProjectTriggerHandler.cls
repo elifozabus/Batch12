@@ -3,13 +3,16 @@ public class SalesforceProjectTriggerHandler {
         //create an empty list of sf tickets because we want to create multiple tickets because we might have multiple projects.
         try{
             List<Salesforce_Ticket__c> stList = new List<Salesforce_Ticket__c>();
+            DefaultTicketInfo__c defaultValues = DefaultTicketInfo__c.getOrgDefaults();
 
             //for each project create new ticket.
             for (Salesforce_Project__c eachSP : spTriggerNew){
                 Salesforce_Ticket__c st = new Salesforce_Ticket__c();
-                st.Subject__c = 'Default st';
+                st.Subject__c = defaultValues.Subject__c; //do not hard code this. make it a little dynamic.
+                st.Priority__c = 'Medium';
                 st.Salesforce_Project__c = eachSP.id; //this is relationship field.
                 //add it on the list.
+                st.Description__c = defaultValues.description__c;
                 stList.add(st);
             }
             //insert only if we have at least one record in the list.
