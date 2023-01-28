@@ -39,3 +39,5 @@ system.debug(jsonString4);
 //Callout Test
 //bunu execute ettiginde System Callout Exception alacaksin: 'Anoutharized Endpoints'. Bunun icin orgta Home>Remote Site Settings'e girip yeni bir tane olustur. Orda endpointi yani url'i copy paste yapacaksin. bizimm url burda mesela : https://th-apex-http-callout.herokuapp.com/animals.
 RestCallouts.getAnimals();
+RestCallouts.getAirlines();
+RestCallouts.getEmployees();

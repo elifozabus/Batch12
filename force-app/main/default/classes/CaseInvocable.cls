@@ -1,6 +1,6 @@
 public with sharing class CaseInvocable {
-    //If you want to store data permanently, then go for create sObject. If you need storing the data temporarily or carry the data temporaryly from one place to another place, then go for the concept whic is calles PROPER CLASS. Proper Claass icinde sadece variable tasir asla metot falan yoktur.
-    //first, we will create a Proper Class, whic is carrying more than one information, AMA BUNU ALTTA YAZICAM 'public class InpurRequest...' ile baslayan.ve onu inuput olarak simdi yazacagim classa alicam. Class icinde class gibi. Ve enson @invocable anno.ekliyorum.
+    //If you want to store data permanently, then go for create sObject. If you need storing the data temporarily or carry the data temporaryly from one place to another place, then go for the concept which is calles PROPER CLASS. Proper Claass icinde sadece variable tasir asla metot falan yoktur.
+    //first, we will create a Proper Class, which is carrying more than one information, AMA BUNU ALTTA YAZICAM 'public class InpurRequest...' ile baslayan.ve onu input olarak simdi yazacagim classa alicam. Class icinde class gibi. Ve en son @invocable annotation ekliyorum.
 
     @InvocableMethod(label='Send Email & Save Activity'
     description='This method sends an email and saves the same as activity'
@@ -21,7 +21,7 @@ public with sharing class CaseInvocable {
             Messaging.sendEmail(msgs);
         }
     }
-
+    //PROPER CLASS
     public class InputRequest {
         @InvocableVariable(label='Contact ID' description='Contact ID' required=true)
         public Id contactId;
