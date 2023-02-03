@@ -41,3 +41,5 @@ system.debug(jsonString4);
 RestCallouts.getAnimals();
 RestCallouts.getAirlines();
 RestCallouts.getEmployees();
+RestCallouts.getCasesUsingNC();
+RestCallouts.postAnimal();
